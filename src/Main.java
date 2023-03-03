@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,11 +19,24 @@ public class Main {
         task3(textList);
 
         task4(textList);
+        task4WithStream(textList);
 
 
     }
 
+    private static void task4WithStream(List<String> textList) {
+        System.out.println("Task 4 func:");
+
+        Set<String> textSet = new HashSet<>(textList);
+        System.out.println(textSet.stream()
+                .map(string -> Collections.frequency(textList, string))
+                .collect(Collectors.toList()));
+        System.out.println();
+    }
+
     private static void task4(List<String> textList) {
+        System.out.println("Task 4:");
+
         Set<String> textSet = new HashSet<>(textList);
         List<Integer> nOfOccurrences = new ArrayList<>();
         for (String string : textSet) {
@@ -30,34 +44,45 @@ public class Main {
             nOfOccurrences.add(occ);
         }
         System.out.println(nOfOccurrences);
+        System.out.println();
     }
 
     private static void task3(List<String> textList) {
+        System.out.println("Task 3:");
         Set<String> textSet = new HashSet<>(textList);
         System.out.println(textSet);
+        System.out.println();
     }
 
     private static void task2WithStream(List<Integer> nums) {
+        System.out.println("Task 2 func:");
         Set<Integer> numsTreeSet = new TreeSet<>(nums);
         numsTreeSet.stream().filter(num -> num % 2 == 0).forEach(System.out::println);
+        System.out.println();
     }
 
     private static void task2(List<Integer> nums) {
+        System.out.println("Task 2:");
         Set<Integer> numsTreeSet = new TreeSet<>(nums);
         for (Integer num : numsTreeSet) {
             if (num % 2 == 0)
                 System.out.println(num);
         }
+        System.out.println();
     }
 
     private static void task1WithStream(List<Integer> nums) {
+        System.out.println("Task 1 func:");
         nums.stream().filter(num -> num % 2 != 0).forEach(System.out::println);
+        System.out.println();
     }
 
     private static void task1(List<Integer> nums) {
+        System.out.println("Task 1:");
         for (Integer num : nums) {
             if (num % 2 != 0)
                 System.out.println(num);
         }
+        System.out.println();
     }
 }
